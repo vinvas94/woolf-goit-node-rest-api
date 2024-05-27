@@ -8,22 +8,22 @@ import schemas from "../schemas/contactsSchemas.js";
 
 const contactsRouter = express.Router();
 
-contactsRouter.get("/", ctrl.getAllContacts);
+contactsRouter.get("/", ctrl.listContacts);
 
-contactsRouter.get("/:id", ctrl.getOneContact);
+contactsRouter.get("/:id", ctrl.getContactById);
 
-contactsRouter.delete("/:id", ctrl.deleteContact);
+contactsRouter.delete("/:id", ctrl.removeContact);
 
 contactsRouter.post(
   "/",
   validateBody(schemas.createContactSchema),
-  ctrl.createContact
+  ctrl.addContact
 );
 
 contactsRouter.put(
   "/:id",
   validateBody(schemas.updateContactSchema),
-  ctrl.updateContact
+  ctrl.updateContactId
 );
 
 export default contactsRouter;
